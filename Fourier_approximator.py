@@ -16,34 +16,43 @@ import scipy.integrate as integrate
 from numpy import sqrt, sin, cos, pi
 import Circle
 import rotations
-# not useful
-def finda0(func):
-    integ = integrate.quad(func, -pi, pi)[0]
 
-def findas(func, degree):
+def finda0(func, domain):
+    rng = abs(domain[0] - domain[1])
+    integ = integrate.quad(func, domain[0], domain[1])[0] / (rng / 2)
+    print(integ)
+    return integ
+
+def findas(func, degree, domain):
     lst = []
+    rng = abs(domain[0] - domain[1])
     for i in range(1, degree + 1):
         combined = lambda x: func(x) * cos(i * x)
-        integ = integrate.quad(combined, -pi, pi)[0]
+        integ = integrate.quad(combined, domain[0], domain[1])[0] / (rng / 2)
         lst.append(integ)
-    return lst
-##
-def findbs(func, degree): 
-    lst = []
-    for i in range(1, degree + 1):
-        combined = lambda x: func(x) * sin(i * x)
-        integ = integrate.quad(combined, -pi, pi)[0]
-        lst.append(integ)
+    print(lst)
     return lst
 
-def approximate(func, degree, resolution = pi / 16):
-    a_list = [finda0(func)] + findas(func, degree) #only used if we care about x position.
-    b_list = findbs(func, degree)
+def findbs(func, degree, domain): 
+    lst = []
+    rng = abs(domain[0] - domain[1])
+    for i in range(1, degree + 1):
+        combined = lambda x: func(x) * sin(i * x)
+        integ = integrate.quad(combined, domain[0], domain[1])[0] / (rng / 2)
+        lst.append(integ)
+    print(lst)
+    return lst
+
+def approximate(func, degree, resolution = pi / 16, domain = (0, 10)):
+    a_list = [finda0(func, domain) / 2] + findas(func, degree, domain)
+    b_list = findbs(func, degree, domain)
     total = None
     speed = resolution
     i = 1
     for b in b_list:
         total = Circle(b, speed * i, total)
         i += 1
+    i = 0
+    for a in a_list:
+        total = Circle(a, -speed * i, total, pi / 2)
     return total
-
