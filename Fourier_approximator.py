@@ -27,7 +27,7 @@ def findas(func, degree, domain):
     lst = []
     rng = abs(domain[0] - domain[1])
     for i in range(1, degree + 1):
-        combined = lambda x: func(x) * cos(i * x)
+        combined = lambda x: func(x) * cos(i * x * pi / (rng / 2))
         integ = integrate.quad(combined, domain[0], domain[1])[0] / (rng / 2)
         lst.append(integ)
     print(lst)
@@ -37,7 +37,7 @@ def findbs(func, degree, domain):
     lst = []
     rng = abs(domain[0] - domain[1])
     for i in range(1, degree + 1):
-        combined = lambda x: func(x) * sin(i * x)
+        combined = lambda x: func(x) * sin(i * x * pi / (rng / 2))
         integ = integrate.quad(combined, domain[0], domain[1])[0] / (rng / 2)
         lst.append(integ)
     print(lst)
@@ -48,11 +48,12 @@ def approximate(func, degree, resolution = pi / 16, domain = (0, 10)):
     b_list = findbs(func, degree, domain)
     total = None
     speed = resolution
+    hrange = (abs(domain[0] - domain[1])) / 2
     i = 1
     for b in b_list:
-        total = Circle(b, speed * i, total)
+        total = Circle(b, pi * (speed * i) / hrange, total)
         i += 1
     i = 0
     for a in a_list:
-        total = Circle(a, -speed * i, total, pi / 2)
+        total = Circle(a, pi * (-speed * i) / hrange, total, pi / 2)
     return total
