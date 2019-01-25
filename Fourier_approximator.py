@@ -56,4 +56,5 @@ def approximate(func, degree, resolution = pi / 16, domain = (0, 10)):
     i = 0
     for a in a_list:
         total = Circle(a, pi * (-speed * i) / hrange, total, pi / 2)
+        i += 1
     return total
