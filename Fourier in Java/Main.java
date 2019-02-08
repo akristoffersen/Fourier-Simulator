@@ -5,6 +5,7 @@ class Main {
         Circle b;
         Circle c;
         Circle d;
+        double base_radius = 100;
         a = new Circle(4, Math.PI / 8, 0, null);
         b = new Circle(4 / 3, 3 * Math.PI / 8, 0, a);
         c = new Circle(4 / 5, 5 * Math.PI / 8, 0, b);
