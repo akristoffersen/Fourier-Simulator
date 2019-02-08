@@ -1,6 +1,6 @@
 class Main {
     public static void main (String[] args) {
-        T = args[0];
+        double T = Double.parseDouble(args[0]);
         Circle a; //test of basic squarewave
         Circle b;
         Circle c;
@@ -13,14 +13,18 @@ class Main {
 
         //Standard Drawing section
         StdDraw.enableDoubleBuffering();
-        StdDraw.setScale(-10000, 10000);
-        StdDraw.clear();
+        StdDraw.setScale(-25, 25);
+        
 
         Double time = 0.0;
         while (time < T) {
             d.takestep();
-            System.out.println(d.end);
+            d.draw();
+            System.out.println(d.end[0] + " " + d.end[1]);
             time++;
+            StdDraw.show();
+            StdDraw.pause(200);
+            StdDraw.clear();
         }
     }
 }

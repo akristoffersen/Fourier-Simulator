@@ -44,4 +44,23 @@ public class Circle {
         end[0] = Math.cos(angle) * radius + center[0]; //sets the circle's ends to reflect the change
         end[1] = Math.sin(angle) * radius + center[1]; //in angle and center, if any
     }
+
+    public void draw() {
+        //drawing circle
+        
+        StdDraw.setPenColor(StdDraw.BLUE);
+        StdDraw.setPenRadius();
+        StdDraw.circle(5 * center[0],5 * center[1], 5 * radius);
+
+        //drawing ends/points and recursive call.
+        StdDraw.setPenRadius(0.025);
+        StdDraw.setPenColor(StdDraw.RED);
+        StdDraw.point(5 * end[0], 5 * end[1]);
+
+        if (this.parent == null) {
+            StdDraw.point(5 * center[0], 5 * center[1]);
+        } else {
+            this.parent.draw();
+        }
+    }
 }
