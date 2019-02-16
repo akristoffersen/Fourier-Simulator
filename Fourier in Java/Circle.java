@@ -50,17 +50,23 @@ public class Circle {
         
         StdDraw.setPenColor(StdDraw.BLUE);
         StdDraw.setPenRadius();
-        StdDraw.circle(5 * center[0],5 * center[1], 5 * radius);
+        StdDraw.circle(center[0], center[1], radius);
 
         //drawing ends/points and recursive call.
-        StdDraw.setPenRadius(0.025);
+        StdDraw.setPenRadius(0.017);
         StdDraw.setPenColor(StdDraw.RED);
-        StdDraw.point(5 * end[0], 5 * end[1]);
+        StdDraw.point(end[0],end[1]);
 
         if (this.parent == null) {
-            StdDraw.point(5 * center[0], 5 * center[1]);
+            StdDraw.point(center[0], center[1]);
         } else {
             this.parent.draw();
         }
+    }
+
+    public void draw_line() {
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.setPenRadius(0.0017);
+        StdDraw.line(this.end[0], this.end[1], 5000, this.end[1]);
     }
 }
