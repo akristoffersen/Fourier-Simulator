@@ -4,9 +4,6 @@ Fourier Circle Simulator in Java
 by @akristoffersen 2019
 
 */
-
-import java.util.*;
-
 public class Circle {
 
     public double radius;
@@ -68,5 +65,25 @@ public class Circle {
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.setPenRadius(0.0017);
         StdDraw.line(this.end[0], this.end[1], 5000, this.end[1]);
+    }
+
+    //Demos
+
+    public static Circle sawTooth(double rad, double speed, int rez) {
+        Circle a = new Circle(rad / rez, speed * rez, 0, null);
+        if (rez > 1) {
+            a.parent = squareWave(rad, speed, rez - 1);
+        }
+        return a;
+    }
+
+    public static Circle squareWave(double rad, double speed, int rez) {
+        Circle a = null;
+        int multi = 1;
+        for (int i = 0; i < rez; i++) {
+            a = new Circle(rad / multi, speed * multi, 0, a);
+            multi += 2;
+        }
+        return a;
     }
 }
