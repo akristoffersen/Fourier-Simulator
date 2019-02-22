@@ -49,6 +49,11 @@ public class Circle {
         StdDraw.setPenRadius();
         StdDraw.circle(center[0], center[1], radius);
 
+        //drawing line from center to end.
+        StdDraw.setPenRadius(0.0017);
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.line(center[0], center[1], end[0], end[1]);
+
         //drawing ends/points and recursive call.
         StdDraw.setPenRadius(0.017);
         StdDraw.setPenColor(StdDraw.RED);
