@@ -1,8 +1,10 @@
 import java.awt.Color;
+import java.util.LinkedList;
+
 public class Main {
     public static void main (String[] args) {
         //makinfg the graph
-        ArrayDeque<Double> yvalues = new ArrayDeque<>(200);
+        LinkedList<Double> yvalues = new LinkedList();
         Grapher grapher = new Grapher(StdDraw.BLACK, 50, 5000);
 
         double T = Double.parseDouble(args[0]);

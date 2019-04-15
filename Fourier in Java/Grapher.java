@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.LinkedList;
 public class Grapher {
     //color is self explanatory, dx is the x distance between each point.
     public Color color;
@@ -12,7 +13,7 @@ public class Grapher {
         starting_x = sx;
     }
 
-    public void graph(ArrayDeque<Double> arr, int shown) {
+    public void graph(LinkedList<Double> arr, int shown) {
         StdDraw.setPenRadius(0.0017);
         StdDraw.setPenColor(color);
         double x = starting_x;
