@@ -17,3 +17,5 @@ Features include:
 To-Do:
 
 *** Find a way to input custom functions from the command line. Do not want to create my own string->math function parser, so will probably find something else for this online. 
+
+*** Decide on whether I should use an ArrayDeque implementation (almost equivalent to something made in CS61B) with a constant get(index) method or just deal with the slower runtime linkedList for drawing the continuous graphing in the java program. Thoughts/suggestions on this problem are greatly appreciated!
