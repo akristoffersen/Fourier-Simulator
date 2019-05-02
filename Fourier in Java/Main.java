@@ -3,6 +3,9 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main (String[] args) {
+        //args[0] --> how many time steps. I think 2000 is a pretty good number.
+        //args[1] --> resolution, or how many circles you want to use to do the fourier series.
+        //            This is equivalent to M in lecture.
         //makinfg the graph
         LinkedList<Double> yvalues = new LinkedList();
         Grapher grapher = new Grapher(StdDraw.BLACK, 50, 5000);
